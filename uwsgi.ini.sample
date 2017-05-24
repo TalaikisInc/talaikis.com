@@ -1,0 +1,31 @@
+[uwsgi]
+folder = <project_name>
+
+chdir = /home/%(folder)
+wsgi-file = /home/%(folder)/sekmet/wsgi.py
+virtualenv = /usr/local/anaconda/envs/%(folder)
+
+cheaper-algo = spare
+cheaper = 2
+cheaper-initial = 5
+workers = 10
+cheaper-step = 1
+processes = 3
+
+uid = www-data
+gid = www-data
+
+socket = /home/%(folder)/uwsgi.sock
+chmod-socket = 660
+chown-socket = www-data:www-data
+
+enable-threads = true
+harakiri = 10
+thunder-lock = true
+vaccum = true
+die-on-term = true
+enable-threads = true
+
+disable-logging = true
+pidfile = /tmp/%(folder).pid
+logto = /home/%(folder)/logs/uwsgi.log

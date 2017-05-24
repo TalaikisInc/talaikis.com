@@ -1,0 +1,9 @@
+[uwsgi]
+folder = <project_name>
+
+emperor = /etc/uwsgi/vassals
+disable-logging = true
+logto = /home/%(folder)/logs/uwsgi_emperor.log
+uid = www-data
+gid = www-data
+vhost = true
