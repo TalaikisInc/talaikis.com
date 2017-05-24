@@ -1,10 +1,9 @@
 from random import choice, shuffle
+from functools import lru_cache
 
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.conf import settings
-
-#from functools import lru_cache
 
 from rest_framework import serializers
 from rest_framework.renderers import JSONRenderer
@@ -24,7 +23,7 @@ class QuotesSerializer(serializers.ModelSerializer):
         fields = ('quote', 'author', 'cat')
 
 
-#@lru_cache(maxsize=32)
+@lru_cache(maxsize=32)
 def randomquote_ids():
     random_ids = Quotes.objects.all().values_list('id', flat=True).order_by('id')
     return random_ids
@@ -38,7 +37,7 @@ class JSONResponse(HttpResponse):
 
 
 @csrf_exempt
-#@lru_cache(maxsize=128)
+@lru_cache(maxsize=128)
 def quote_list(request):
     if request.method == 'GET':
         try:
@@ -54,11 +53,10 @@ def quote_list(request):
 @csrf_exempt
 def random_quote(request):
     try:
-        how_much_quotes = 10
+        how_much_quotes = 1
         random_ids = randomquote_ids()
         random_id = choice(random_ids)
-        if random_id > 10 & (random_id+how_much_quotes) < len(random_ids):
-            quote = Quotes.objects.get(pk__gte=random_id, pk__lte=(random_id+how_much_quotes))
+        quote = Quotes.objects.get(pk=random_id)
 
         if request.method == 'GET':
             serializer = QuotesSerializer(quote)
