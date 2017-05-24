@@ -1,0 +1,121 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Famous Quotes</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald:b|Lato">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <style>
+      body {
+        padding-top: 25px;
+      }
+
+      .quote {
+        font-family: 'Oswald', serif;
+        font-size: 3em;
+        color: white;
+        text-shadow: 1px 1px 1px #ffe;
+      }
+
+      .author {
+        font-family: 'Lato', serif;
+        font-size: 1.2em;
+        color: white;
+        text-shadow: 1px 1px 1px #ffe;
+        padding-bottom: 5px;
+      }
+
+      .quote-page {
+        padding-bottom: 25px;
+      }
+
+      #q {
+        font-size: 3em;
+        color: white;
+        text-shadow: 1px 1px 1px #ffe;
+      }
+
+      #twitter {
+        font-size: 1em;
+        color: white;
+      }
+
+      .copy {
+        color: white;
+        font-family: 'Lato', serif;
+        font-size: 1em;
+      }
+    </style>
+</head>
+
+<body id="body">
+  <div class="container-fluid">
+    <!-- <div class="container"> -->
+      <div class="col-md-1"></div>
+      <div class="col-md-9">
+        <div class="quote-page"></div>
+        <button class="btn btn-default" id="get-quote">More</button>
+      </div>
+      <div class="col-md-2"></div>
+  <!-- </div> -->
+  </div>
+
+<script>
+$(document).ready(function() {
+  var bgColors = ['red', 'green', 'blue', 'black', 'maroon', 'navy', 'fuchsia',
+    'purple', 'Brown', 'BlueViolet', 'CadetBlue', 'Chocolate', 'Coral',
+    'CornflowerBlue', 'DarkBlue', 'DarkGoldenRod', 'DarkGreen', 'DarkMagenta',
+    'DarkOliveGreen', 'DarkRed', 'DarkSlateBlue', 'DarkSlateGray', 'DarkViolet',
+    'DeepPink', 'FireBrick', 'ForestGreen', 'Indigo', 'IndianRed', 'Maroon',
+    'MidnightBlue'];
+
+  // API only works on the same origin,
+  // pelase visit https://talaikis.com/quotes/
+  // to see the random quotes site
+  $.getJSON("https://talaikis.com/api/quotes/", callbackFuncWithData);
+
+  function callbackFuncWithData(json) {
+      var html = "";
+      var quote = "";
+      var author = "";
+      var numRand = Math.floor((Math.random() * json.length));
+
+      document.getElementById("body").style.backgroundColor  = bgColors[Math.floor((Math.random() * bgColors.length))];
+
+      quote = json[numRand]['quote'];
+      author = json[numRand]['author'];
+
+      html += "<div class='quote'><i class='fa fa-quote-right' aria-hidden='true' id='q'></i> "+ quote +"</div>";
+      html += "<div class='author'>"+ author +"</div>";
+      html += "<p><a href='https://twitter.com/intent/tweet?text=" + quote + " -- " + author + " https://goo.gl/4Hecgs&hashtags=quotes' target='_blank' title='Tweet'><i class='fa fa-twitter' id='twitter'></i></a></p>";
+
+      $(".quote-page").html(html);
+   }
+
+  $("#get-quote").on("click", function() {
+     $.getJSON("https://talaikis.com/api/quotes/", function(json) {
+        var html = "";
+        var quote = "";
+        var author = "";
+        var numRand = Math.floor((Math.random() * json.length));
+
+        document.getElementById("body").style.backgroundColor  = bgColors[Math.floor((Math.random() * bgColors.length))];
+
+        quote = json[numRand]['quote'];
+        author = json[numRand]['author'];
+
+        html += "<div class='quote'><i class='fa fa-quote-right' aria-hidden='true' id='q'></i> "+ quote +"</div>";
+        html += "<div class='author'>"+ author +"</div>";
+        html += "<p><a href='https://twitter.com/intent/tweet?text=" + quote + " -- " + author + " https://goo.gl/4Hecgs&hashtags=quotes' target='_blank' title='Tweet'><i class='fa fa-twitter' id='twitter'></i></a></p>";
+
+        $(".quote-page").html(html);
+      });
+  });
+});
+</script>
+<p class="copy text-center">&copy; <a href="https://talaikis.com">Tadas Talaikis</a>, 2017</p>
+</body>
+</html>
+{% endspaceless %}

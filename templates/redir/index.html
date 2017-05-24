@@ -1,0 +1,247 @@
+{% extends 'redir/base.html' %}
+{% load static %}
+{% block title %}Tadas Talaikis{% endblock %}
+
+{% block content %}
+    <section id="about" class="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                  <h1 class="display-4 section-title">About</h1>
+                  <img src="https://talaikis.com/static/media/talaikis.jpg" class="img-responsive img-circle" alt="Tadas Talaikis, 2015/08">
+                  <p class="lead">Tadas Talaikis - full stack Python, Golang* (and soon, hopefully, Node.js*) web developer, entrepreneur, quant trader with 10+ years of experience and somewhat a writer.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4 section-title">Latest projects</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">QUANTRADE</div>
+    <div class="panel"><img src="https://talaikis.com/static/media/quantrade.png" class="img-responsive img-screenshot" alt="Quantitative trading signals for retail traders">
+      <p>Quantitative trading signals & 100s of profitable automated strategies portfolio for retail traders without B.S.</p>
+      <p><a href="https://www.facebook.com/quantrade/"><i class="fa fa-facebook fa-fw"></i></a>
+        <a href="https://twitter.com/QuantradeLtd"><i class="fa fa-twitter fa-fw"></i></a>
+      <a href="https://quantrade.co.uk/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+      <p><span class="font-weight-bold">Technologies</span>: Python 3.6/ Django 1.11/ Elastic Email/ Redis/ MySQL/ Postgres/ MongoDB (dropped)/ Arctic (dropped)/ InfluxDB (dropped)/ uWSGI/ Cherypy (dropped)/ Nginx/ Ubuntu 14.04/ Windows Server 2012/ Metatrader 4/ Pandas/ Numpy/ Scipy/ WebDAV/ lru/ Amazon AWS/ etc.</p><a href="https://quantrade.co.uk"><button class="btn btn-primary">Visit quant trading signals</button></a></div>
+  </div>
+  <div class="col-md-6">
+    <div class="flip">UFUNC</div>
+    <div class="panel"><p>TBD.</p><p><span class="font-weight-bold">Technologies</span>: Python 3.6/ uvloop/ asyncpg/...</p><a href="https://ufunc.com"><button class="btn btn-primary">Visit ML trading signals</button></a></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">PIGGYBOB</div>
+    <div class="panel"><p>TBD.</p><a href="https://piggybob.com"><button class="btn btn-primary">Visit personal finance app</button></a></div>
+  </div>
+ <div class="col-md-6">
+    <div class="flip">TALAIKIS</div>
+    <div class="panel"><p>This site.</p>
+    <p><span class="font-weight-bold">Technologies</span>: Bootstrap/ CSS/ jQuery/ Python 2.7/ Django 1.10/ uWSGI/ Nginx/ Elastic Email.</p></div>
+  </div>
+</div>
+<h1 class="display-4 section-title"></h4>
+<h1 class="display-4 section-title">QProb aggregators</h1>
+<p class="center"><a href="https://github.com/xenu256/QProb"><i class="fa fa-github fa-fw"></i> GitHUB repo</a></p>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">QPROB</div>
+    <div class="panel"><img src="https://talaikis.com/static/media/qprob.png" class="img-responsive img-screenshot" alt="Qprob.com quantitative trading news">
+      <p>Automatic content & sentiment summarization platform with whole text search, Facebook, Twitter, RSS and email feeds.</p>
+      <p><a href="https://www.facebook.com/quantrade/"><i class="fa fa-facebook fa-fw"></i></a>
+        <a href="https://twitter.com/QProbcom"><i class="fa fa-twitter fa-fw"></i></a>
+      <a href="https://qprob.com/quant_finance/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+      <p><span class="font-weight-bold">Technologies</span>: Python 2.7/ Django 1.10/ Bootstrap/ Memcached/ Nginx/ uWSGI/ Elastic Search/ mySQL/ RabbitMQ, Celery/ Ubuntu 14.04/ etc.</p><a href="https://qprob.com"><button class="btn btn-primary">Visit quant news</button></a></div>
+  </div>
+  <div class="col-md-6">
+    <div class="flip">STCKMRKTNWS</div>
+    <div class="panel"><img src="https://talaikis.com/static/media/stckmrkt.png" class="img-responsive img-screenshot" alt="Stckmrktnws.com stock market news">
+      <p>Just another website basedd on QProb platform.</p>
+      <p><a href="https://www.facebook.com/stckmrktnws/"><i class="fa fa-facebook fa-fw"></i></a>
+        <a href="https://twitter.com/StckMrktNws"><i class="fa fa-twitter fa-fw"></i></a>
+      <a href="https://stckmrktnws.com/stock_market/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+      <a href="https://strckmrktnws.com"><button class="btn btn-primary">Visit stock market news</button></a></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">BSNSSNWS</div>
+    <div class="panel"><p>All major business nerws in one place.</p><p>Runs on QProb platform.</p>
+      <p><a href="https://www.facebook.com/bsnssnws/"><i class="fa fa-facebook fa-fw"></i></a>
+        <a href="https://twitter.com/BsnssNws"><i class="fa fa-twitter fa-fw"></i></a>
+      <a href="https://bsnssnws.com/business_today/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+      <a href="https://bsnssnws.com/"><button class="btn btn-primary">Visit business daily</button></a></div>
+  </div>
+ <div class="col-md-6">
+   <div class="flip">ENTREPRNRNWS</div>
+   <div class="panel"><p>Aggregates news from world's top entrepreneurs.</p>
+     <p><a href="https://www.facebook.com/EntreprnrNws-740549806120037/"><i class="fa fa-facebook fa-fw"></i></a>
+       <a href="https://twitter.com/Entreprnrnws4"><i class="fa fa-twitter fa-fw"></i></a>
+     <a href="https://entreprnrnws.com/entrepreneurs_today/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+     <p>Runs on QProb platform.</p><a href="https://entreprnrnws.com//"><button class="btn btn-primary">Visit entrepreneurs daily</button></a></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">REALESTENEWS</div>
+    <div class="panel"><p>Everything about real estate and real estate market.</p>
+      <p><a href="https://www.facebook.com/Realestatenews-103345963516649/"><i class="fa fa-facebook fa-fw"></i></a>
+        <a href="https://twitter.com/RlEsttNws"><i class="fa fa-twitter fa-fw"></i></a>
+      <a href="https://realestenews.com/real_estate_investing/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+      <p>Runs on QProb platform.</p><a href="https://realestenews.com/"><button class="btn btn-primary">Visit real estate investing</button></a></div>
+  </div>
+ <div class="col-md-6">
+   <div class="flip">PARAMETERLESS</div>
+   <div class="panel"><p>Technology, science and futurism in one place.</p>
+     <p><a href="https://www.facebook.com/Parameterless-183241492170941/"><i class="fa fa-facebook fa-fw"></i></a>
+       <a href="https://twitter.com/parameter_less"><i class="fa fa-twitter fa-fw"></i></a>
+     <a href="https://parameterless.com/technology_news/feed/"><i class="fa fa-rss-square fa-fw"></i></a></p>
+     <p>Runs on QProb platform.</p><a href="https://parameterless.com//"><button class="btn btn-primary">Visit future tech daily</button></a></div>
+  </div>
+</div>
+
+<h1 class="display-4 section-title"></h4>
+<h1 class="display-4 section-title">Small things</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">FAMOUS QUOTES</div>
+    <div class="panel"><p>Just simple random quotes page.</p>
+    <p><span class="font-weight-bold">Technologies</span>: Django/ Django REST Framework/ Bootstrap/ CSS/ JavaScript.</p>
+    <a href="https://talaikis.com/quotes/"><button class="btn btn-primary">Visit famous quotes site</button></a></div>
+  </div>
+ <div class="col-md-6">
+    <div class="flip">DR. JONAS SALK TRIBUTE</div>
+    <div class="panel"><p>Simple tribute page for Dr. Jonas Salk.</p>
+    <p><span class="font-weight-bold">Technologies</span>: HTML, Bootstrap, CSS.</p>
+    <a href="https://talaikis.com/jonas_salk/"><button class="btn btn-primary">Visit Dr. Jonas Salk tribute</button></a></div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">LOCAL WEATHER</div>
+    <div class="panel"><p>Real time local weather data.</p>
+      <p><span class="font-weight-bold">Technologies</span>: Bootstrap/ CSS/ jQuery/ JavaScript/ <a href="https://wunderground.com">Weather Undergournd</a> API.</p><a href="https://talaikis.com/weather/"><button class="btn btn-primary">Visit local weather</button></a></div>
+  </div>
+ <div class="col-md-6">
+   <div class="flip">QUOTES API</div>
+   <div class="panel">
+     <p>Random quotes API.</p>
+       <p><span class="font-weight-bold">Technologies</span>: Django 1.10/ Python 2.7 over DRF/ uWSGI/ Nginx.
+      </p><a href="https://talaikis.com/random_quotes_api/"><button class="btn btn-primary">Visit random quotes API</button></a></div>
+  </div>
+</div>
+
+<h1 class="display-4 section-title"></h4>
+<h1 class="display-4 section-title">Mobile</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="flip">UFUNC | smth</div>
+    <div class="panel"><p>TBD.</p>
+    <p><span class="font-weight-bold">Technologies</span>: Unknown,...</p>
+    <!-- <a href="https://talaikis.com/quotes/"><button class="btn btn-primary">Visit famous quotes site</button></a></div> -->
+    </div>
+  </div>
+
+ <div class="col-md-6">
+    <div class="flip">QPROB</div>
+    <div class="panel"><p>TBD.</p>
+    <p><span class="font-weight-bold">Technologies</span>: Sanic, uvloop,...</p>
+    <!-- <a href="https://talaikis.com/jonas_salk/"><button class="btn btn-primary">Visit Dr. Jonas Salk tribute</button></a></div> -->
+    </div>
+  </div>
+</div>
+
+</div> <!-- end of portfolio -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4 section-title">Skills</h1>
+                    <p><strong>OSs:</strong> Linux, Windows.</p>
+                    <p><strong>Programming languages:</strong> Python 2.7/3+, Golang, C#, Javascript,
+                        Shell, CSS, HTML, MQL4.</p>
+                    <p><strong>Databases:</strong> MySQL, Postgres, MongoDB.</p>
+                    <p><strong>Frameworks:</strong> Django.</p>
+                    <p><strong>Other tech:</strong> Git, memcached, Redis, etc.</p>
+                    <p><strong>Other:</strong> Data science, quantitative trading and analysis, search
+                      engine optimization, sales, marketing, management.</p>
+                    <p><strong>Languages:</strong> English, Russian, Lithuanian, some French, Polish.</p>
+                    <p><strong>Personal:</strong> Business oriented, strategic thinking, creative thinking,
+                      problem solving, leadership skills, zero based budgeting, persistence, whatever it takes.</p>
+                    <p><strong>Strengths:</strong><sip>1</sip> Ideation. Deliberative. Command. Activator. Individualization..</p>
+                    <p><strong>Weaknesses:</strong> Don't really wants to work on something that fully
+                      not his own responsibility. Was damaged by years of freedom :-D</p>
+
+                    <hr />
+                    <p><small><sip>1</sip> GALLUP Strengths Finder 2.0</small></p>
+                  </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cv" class="cv">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4 section-title">CV</h1>
+
+                    <iframe src="https://talaikis.com//static/cv.pdf" style="width: 100%; height: 100%; border: none;"></iframe>
+
+                  </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="display-4 section-title contact-title">Contact</h1>
+{{ form.non_field_errors }}
+<form action="" method="post">
+  <div class="form-group">
+   {% csrf_token %}
+  {{ form.name.errors }}
+    <label for="{{ form.name.id_for_label }}" class="form-label">Name:</label>
+  <div>{{ form.name }}</div>
+</div>
+<div class="form-group">
+  {{ form.email.errors }}
+    <label for="{{ form.email.id_for_label }}" class="form-label">Email:</label>
+  <div>{{ form.email }}</div>
+</div>
+<div class="form-group">
+  {{ form.message.errors }}
+    <label for="{{ form.message.id_for_label }}" class="form-label">Message:</label>
+  <div>{{ form.message }}</div>
+</div>
+<div class="form-group">
+   <input type="submit"  class="btn btn-default" value="Send" />
+ </div>
+ </div>
+  </form>
+
+                </div>
+            </div>
+    </section>
+
+{% endblock %}

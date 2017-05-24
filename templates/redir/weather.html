@@ -1,0 +1,307 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Weather</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Oswald:b|Lato" />
+  <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" /> -->
+  <link href="//cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons.min.css" rel="stylesheet" />
+  <link href="//cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.9/css/weather-icons-wind.min.css" rel="stylesheet" />
+  <style>
+    .vline {
+      border-left: 1px solid #c5cae9;
+      float: left;
+    }
+
+    body {
+      background-color: #1a237e;
+      vertical-align: middle;
+    }
+
+    #i {
+      font-size: 15em;
+      color: white;
+    }
+
+    .row {
+      padding-top: 75px;
+    }
+
+    #icon {
+      padding: 25px 0px 75px 0px;
+    }
+
+    #temp {
+      font-family: 'Oswald', serif;
+      font-size: 8em;
+      color: #c5cae9;
+    }
+
+    #feelsLike {
+      font-family: 'Lato', serif;
+      font-size: 1em;
+      color: #c5cae9;
+      padding-left: 100px;
+    }
+
+    #location {
+      font-family: 'Lato', serif;
+      font-size: 2em;
+      color: #c5cae9;
+      text-shadow: 1px 1px 1px #3949ab;
+    }
+
+    #small {
+      font-size: 2em;
+    }
+
+    .copy {
+      color: #3949ab;
+      font-family: 'Lato', serif;
+      font-size: 1em;
+    }
+  </style>
+</head>
+
+<body id="body">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div id="icon" class="text-center"></div>
+        <div id="location" class="text-center"></div>
+        <div id="temp" class="text-center"></div>
+        <div id="feelsLike" class="vline text-left"></div>
+        <button class="btn btn-primary" id="switchC">&#8451;</button>
+        <button class="btn btn-primary" id="switchF">&#8457;</button>
+      </div>
+      <div class="col-md-3"></div>
+  </div>
+  </div>
+
+<script>
+$(document).ready(function() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      $.getJSON("https://api.wunderground.com/api/566a68a074f40d99/conditions/q/" + position.coords.latitude + "," + position.coords.longitude + ".json", callbackFuncWithData);
+    });
+  }
+
+  function callbackFuncWithData(json) {
+      var tempF = json.current_observation.temp_f;
+      var tempC = json.current_observation.temp_c;
+      var feelslikeF = json.current_observation.feelslike_f;
+      var feelslikeC = json.current_observation.feelslike_c;
+      var humidity = json.current_observation.relative_humidity;
+      var windMph = json.current_observation.wind_mph;
+      var windKph = json.current_observation.wind_kph;
+      var pressure = json.current_observation.pressure_mb;
+      var uV = json.current_observation.UV;
+      var precipTodayInch = json.current_observation.precip_today_in;
+      var precipTodayMm = json.current_observation.precip_today_metric;
+      var icon = json.current_observation.icon;
+      var location = json.current_observation.display_location.full;
+      var windDir = json.current_observation.wind_dir;
+
+      var weatherFA = "";
+      switch(icon) {
+        case "chanceflurries":
+        case "flurries":
+          weatherFA = "wi-flurries";
+          break;
+        case "chancerain":
+          weatherFA = "wi-raindrops";
+          break;
+        case "rain":
+          weatherFA = "wi-day-rain-wind";
+          break;
+        case "chancesnow":
+          weatherFA = "wi-snow";
+          break;
+        case "snow":
+          weatherFA = "wi-day-snow-wind";
+          break;
+        case "chancesleet":
+        case "sleet":
+          weatherFA = "day-sleet";
+          break;
+        case "chancetstorms":
+        case "tstorms":
+          weatherFA = "wi-day-storm-showers";
+          break;
+        case "clear":
+          weatherFA = "wi-night-clear";
+          break;
+        case "unknown":
+          weatherFA = "wi-na";
+          break;
+        case "partlycloudy":
+        case "cloudy":
+          weatherFA = "wi-day-cloudy";
+          break;
+        case "hazy":
+          weatherFA = "day-haze";
+          break;
+        case "fog":
+          weatherFA = "wi-day-fog";
+          break;
+        case "showers":
+          weatherFA = "wi-day-showers";
+          break;
+        case "sunny":
+          weatherFA = "wi-day-sunny";
+          break;
+        case "mostlycloudy":
+          weatherFA = "wi-day-cloudy-high";
+          break;
+        default:
+          weatherFA = "wi-na";
+      }
+
+      var beaufort = "";
+      switch(windKph) {
+        case (windKph < 1):
+          beaufort = "wi-wind-beaufort-0";
+          break;
+        case (windKph >= 1 && windKph <= 5):
+          beaufort = "wi-wind-beaufort-1";
+          break;
+        case (windKph >= 6 && windKph <= 11):
+          beaufort = "wi-wind-beaufort-2";
+          break;
+        case (windKph >= 12 && windKph <= 19):
+          beaufort = "wi-wind-beaufort-3";
+          break;
+        case (windKph >= 20 && windKph < 29):
+          beaufort = "wi-wind-beaufort-4";
+          break;
+        case (windKph >= 29 && windKph < 38):
+          beaufort = "wi-wind-beaufort-5";
+          break;
+        case (windKph >= 38 && windKph <= 49):
+          beaufort = "wi-wind-beaufort-6";
+          break;
+        case (windKph >= 50 && windKph <= 61):
+          beaufort = "wi-wind-beaufort-7";
+          break;
+        case (windKph >= 62 && windKph <= 74):
+          beaufort = "wi-wind-beaufort-8";
+          break;
+        case (windKph >= 75 && windKph <= 88):
+          beaufort = "wi-wind-beaufort-9";
+          break;
+        case (windKph >= 89 && windKph <= 102):
+          beaufort = "wi-wind-beaufort-10";
+          break;
+        case (windKph >= 103 && windKph <= 117):
+          beaufort = "wi-wind-beaufort-11";
+          break;
+        case (windKph >= 118):
+          beaufort = "wi-wind-beaufort-12";
+          break;
+        default:
+          beaufort = "wi-wind-beaufort-0";
+      }
+
+      var wind = "";
+      switch(windDir) {
+        case "N":
+          wind = "wi-from-n";
+          break;
+        case "NNE":
+          wind = "wi-from-nne";
+          break;
+        case "NE":
+          wind = "wi-from-ne";
+          break;
+        case "ENE":
+          wind = "wi-from-ene";
+          break;
+        case "E":
+          wind = "wi-from-e";
+          break;
+        case "ESE":
+          wind = "wi-from-ese";
+          break;
+        case "SE":
+          wind = "wi-from-se";
+          break;
+        case "SSE":
+          wind = "wi-from-sse";
+          break;
+        case "S":
+          wind = "wi-from-s";
+          break;
+        case "SSW":
+          wind = "wi-from-ssw";
+          break;
+        case "SW":
+          wind = "wi-from-sw";
+          break;
+        case "WSW":
+          wind = "wi-from-wsw";
+          break;
+        case "W":
+          wind = "wi-from-w";
+          break;
+        case "WNW":
+          wind = "wi-from-wnw";
+          break;
+        case "NW":
+          wind = "wi-from-nw";
+          break;
+        case "NNW":
+          wind = "wi-from-nnw";
+          break;
+        default:
+          wind = "wi-na";
+      }
+
+      var iconHtml = "<i class='wi "+ weatherFA +" wi-fw' id='i'></i>";
+      $("#icon").html(iconHtml);
+      $("#location").html(location);
+      var tempFHtml = tempF + "&#8457;";
+      var tempCHtml = tempC + "&#8451;";
+      $("#temp").html(tempFHtml);
+
+      var contentHtmlRoyal = "<p>Feels like: " + tempF + "&#8457;</p>" +
+        "<p><i class='wi wi-humidity wi-fw' id='small'></i> " + humidity + "</p>" +
+        "<p><i class='wi "+ beaufort +" wi-fw' id='small'></i> <i class='wi wi-wind "+ wind + " wi-fw' id='small'></i>" + " " + windMph + " mph</p>" +
+        "<p><i class='wi wi-barometer wi-fw' id='small'></i> " + pressure + " mBa</p>" +
+        "<p>UV: " + uV + "</p>" +
+        "<p>Precipitation: " + precipTodayInch + " in</p>" +
+        "";
+
+        var contentHtmlMetric = "<p>Feels like: " + tempC + "&#8451;</p>" +
+          "<p><i class='wi wi-humidity wi-fw' id='small'></i> " + humidity + "</p>" +
+          "<p><i class='wi "+ beaufort +" wi-fw' id='small'></i> <i class='wi wi-wind "+ wind + " wi-fw' id='small'></i>" + " " + windKph + " km/h</p>" +
+          "<p><i class='wi wi-barometer wi-fw' id='small'></i> " + pressure + " mBa</p>" +
+          "<p>UV: " + uV + "</p>" +
+          "<p>Precipitation: " + precipTodayMm + " mm</p>" +
+          "";
+
+      $("#feelsLike").html(contentHtmlRoyal);
+
+      $("#switchC").on("click", function() {
+        $("#feelsLike").html(contentHtmlMetric);
+        $(this).addClass("active");
+        $("#switchF").removeClass("active");
+        $("#temp").html(tempCHtml);
+      });
+
+      $("#switchF").on("click", function() {
+        $("#feelsLike").html(contentHtmlRoyal);
+        $(this).addClass("active");
+        $("#switchC").removeClass("active");
+        $("#temp").html(tempFHtml);
+      });
+   }
+
+});
+</script>
+<p class="copy text-center">&copy; <a href="https://talaikis.com">Tadas Talaikis</a>, 2017</p>
+</body>
+</html>
+{% endspaceless %}
