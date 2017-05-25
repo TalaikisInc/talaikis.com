@@ -4,6 +4,7 @@ from django.conf.urls.static import static
 from django.conf import settings
 from django.conf.urls import (handler400, handler403, handler404, handler500)
 
+from redir.feed import BlogFeed
 from redir import views, serializers
 
 
@@ -12,6 +13,7 @@ urlpatterns = [
     url(r'^$', views.indx_view),
     url(r'^jonas_salk/$', views.jonas_salk, name="jonas_salk"),
     url(r'^blog/$', views.blog, name='blog'),
+    url(r'^feed/$', BlogFeed()),
 
 	#form processes
 	url(r'^thanks/$', views.thanks, name='thanks'),

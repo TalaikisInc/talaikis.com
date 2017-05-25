@@ -1,0 +1,12 @@
+.no-padding {
+   padding: 0 !important;
+   margin: 0 !important;
+}
+
+.img {
+	padding: 10px 20px 10px 20px !important;
+}
+
+.jumbotron{
+	background-color: #FFFFFF !important;
+}
