@@ -126,11 +126,25 @@ class Quotes(models.Model):
 	class Meta:
 		unique_together = ["quote", "author"]
 
+
 class Contacts(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	name = models.CharField(max_length=140, verbose_name=T("Name"))
 	email = models.EmailField(max_length=150, verbose_name=T("Email"))
 	message = models.TextField(verbose_name=T("Message"))
+
+	def __unicode__(self):
+		return u'%s' %(self.name)
+
+	def __str__(self):
+		return u'%s' %(self.name)
+
+
+class Subscriber(models.Model):
+	id = models.BigAutoField(primary_key=True)
+	name = models.CharField(max_length=140, verbose_name=T("Name"))
+	email = models.EmailField(max_length=150, verbose_name=T("Email"))
+    cat = models.ForeignKey(Cat, verbose_name=T("Category"), blank=True, null=True)
 
 	def __unicode__(self):
 		return u'%s' %(self.name)
