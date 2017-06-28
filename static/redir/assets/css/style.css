@@ -99,3 +99,19 @@ body {
 .center {
   text-align: center;
 }
+
+a:link {
+    color: #b3c2bf;
+}
+
+a:visited {
+    color: #e9ece5;
+}
+
+a:hover {
+    color: #e9ece5;
+}
+
+a:active {
+    color: #e9ece5;
+}
