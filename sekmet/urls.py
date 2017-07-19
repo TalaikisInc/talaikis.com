@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.indx_view),
     url(r'^jonas_salk/$', views.jonas_salk, name="jonas_salk"),
+    url(r'^blog/category/(?P<cat_slug>[-\w]+)/$', views.blog, name='blog-cat'),
+    url(r'^blog/post/(?P<post_slug>[-\w]+)/$', views.blog, name='blog-post'),
     url(r'^blog/$', views.blog, name='blog'),
     url(r'^feed/$', BlogFeed()),
 

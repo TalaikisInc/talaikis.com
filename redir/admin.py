@@ -4,7 +4,7 @@ from django import forms
 
 from ckeditor.widgets import CKEditorWidget
 
-from redir.models import (Post, Cat)
+from redir.models import Post, Cat
 
 
 class PostAdminForm(forms.ModelForm):

@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
+from datetime import datetime
 
+from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext as T
 from django.db import models
 
@@ -74,15 +76,21 @@ class QuoteCat(models.Model):
 		return u'%s' %(self.cat)
 
 
-class Cat(models.Model):
+class Cat(AutoSlugifyOnSaveModel):
+	LANGUAGES = (
+        (0, 'English'),
+        (1, 'Lietuvių')
+    )
 	id = models.BigAutoField(primary_key=True)
-	cat = models.CharField(max_length=140, verbose_name=T("Category"), unique=True)
+	title = models.CharField(max_length=140, verbose_name=T("Category"), unique=True)
+	slug = models.CharField(max_length=140, verbose_name=T("Slug"), blank=True, null=True)
+	lang = models.SmallIntegerField(choices=LANGUAGES, default=0)
 
 	def __unicode__(self):
-		return u'%s' %(self.cat)
+		return u'%s' %(self.title)
 
 	def __str__(self):
-		return u'%s' %(self.cat)
+		return u'%s' %(self.title)
 
 
 class QuoteAuthor(models.Model):
@@ -99,7 +107,7 @@ class QuoteAuthor(models.Model):
 class Post(AutoSlugifyOnSaveModel):
 	id = models.BigAutoField(primary_key=True)
 	title = models.CharField(max_length=250, verbose_name=T("Title"), unique=True)
-	date_time = models.DateTimeField(verbose_name=T("Date"))
+	date_time = models.DateTimeField(verbose_name=T("Date"), default=datetime.now())
 	content = models.TextField(verbose_name=T("Content"))
 	cat = models.ForeignKey(Cat, verbose_name=T("Category"), blank=True, null=True)
 	slug = models.CharField(max_length=250, verbose_name=T("Slug"), blank=True, null=True)
@@ -144,7 +152,7 @@ class Subscriber(models.Model):
 	id = models.BigAutoField(primary_key=True)
 	name = models.CharField(max_length=140, verbose_name=T("Name"))
 	email = models.EmailField(max_length=150, verbose_name=T("Email"))
-    cat = models.ForeignKey(Cat, verbose_name=T("Category"), blank=True, null=True)
+	cat = models.ForeignKey(Cat, verbose_name=T("Category"), blank=True, null=True)
 
 	def __unicode__(self):
 		return u'%s' %(self.name)

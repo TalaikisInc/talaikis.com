@@ -3,7 +3,10 @@ from django.shortcuts import render
 from django.conf import settings
 
 from .forms import ContactForm
-from .models import (Contacts, Post, Cat)
+from .models import Contacts, Post, Cat
+
+cats_en = Cat.objects.filter(lang=0)
+cats_lt = Cat.objects.filter(lang=1)
 
 
 def indx_view(request):
@@ -28,10 +31,29 @@ def indx_view(request):
     return render(request, 'redir/index.html', {'form': form })
 
 
-def blog(request):
-    cats = Cat.objects.all()
-    posts = Post.objects.all()
-    return render(request, 'redir/blog.html', {'cats': cats, 'posts': posts, 'blog': True })
+def blog(request, **kwargs):
+    try:
+        cat_slug = kwargs['cat_slug']
+    except:
+        cat_slug = None
+    
+    try:
+        post_slug = kwargs['post_slug']
+    except:
+        post_slug = None
+
+    if (not post_slug is None) & (cat_slug is None):
+        posts = Post.objects.filter(slug=post_slug)
+        return render(request, 'redir/blog.html', {'cats_en': cats_en,
+            'cats_lt': cats_lt, 'posts': posts, 'post_slug': post_slug })
+    elif (not cat_slug is None) & (post_slug is None):
+        cat = Cat.objects.get(slug=cat_slug)
+        posts = Post.objects.filter(cat=cat)
+        return render(request, 'redir/blog.html', {'cats_en': cats_en, 
+            'cats_lt': cats_lt, 'posts': posts, 'cat_slug': cat_slug })
+    else:
+        return render(request, 'redir/blog.html', {'cats_en': cats_en, 
+            'cats_lt': cats_lt, 'first': True })
 
 
 def thanks(request):

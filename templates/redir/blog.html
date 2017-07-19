@@ -8,15 +8,70 @@
 {% endblock %}
 
 {% block content %}
+{% if first %}
 <section id="about" class="about">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-              <h1 class="display-4 section-title">Blog</h1>
-              <p>Nothing here yet until transfer of old posts.</p>
+              <h1 class="display-4 section-title">English Blog</h1>
+              {% for cat in cats_en %}
+                <h3 class="display-4 section-title"><a href="https://talaikis.com/blog/category/{{ cat.slug }}/">{{ cat.title }}</a></h3>
+              {% empty %}
+                    <p>Nothing here yet.</p>
+              {% endfor %}
             </div>
         </div>
     </div>
 </section>
+<section id="about" class="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+              <h1 class="display-4 section-title">Lietuviškas dienoraštis</h1>
+              {% for cat in cats_lt %}
+                <h3 class="display-4 section-title"><a href="https://talaikis.com/blog/category/{{ cat.slug }}/">{{ cat.title }}</a></h3>
+              {% empty %}
+                    <p>Kol kas nieko nerasta.</p>
+              {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% elif cat_slug %}
+<section id="about" class="about">
+    <div class="container">
+        {% for post in posts %}
+        <div class="row">
+            <div class="col-lg-12">
+                <a href="https://talaikis.com/blog/post/{{ post.slug }}/"><h3 class="display-4 section-title">{{ post.title }}</a></h3><br />{{ post.date_time }}
+            </div>
+        </div>
+        {% empty %}
+            <p>Nothing here yet.</p>
+        {% endfor %}
+        
+    </div>
+</section>
+
+{% elif post_slug %}
+<section id="about" class="about">
+    <div class="container">
+        {% for post in posts %}
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="display-4 section-title">{{ post.title }}</h1><br />{{ post.date_time }}
+                {% autoescape off %}
+                    {{ post.content }}
+                {% endautoescape %}
+            </div>
+        </div>
+        {% empty %}
+            <p>Nothing here yet.</p>
+        {% endfor %}
+        
+    </div>
+</section>
+{% endif %}
 
 {% endblock %}
