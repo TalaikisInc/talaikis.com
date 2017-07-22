@@ -1,0 +1,46 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-22 23:21+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .\templates\redir\base.html:28
+msgid "About"
+msgstr ""
+
+#: .\templates\redir\base.html:31
+msgid "Portfolio"
+msgstr ""
+
+#: .\templates\redir\base.html:34
+msgid "Skills"
+msgstr ""
+
+#: .\templates\redir\base.html:40
+msgid "Contact"
+msgstr ""
+
+#: .\templates\redir\base.html:43
+msgid "Blog"
+msgstr ""
+
+#: .\templates\redir\blog.html:4
+msgid "Tadas Talaikis Blog"
+msgstr ""
+
+#: .\templates\redir\blog.html:21 .\templates\redir\blog.html:35
+#: .\templates\redir\blog.html:52 .\templates\redir\blog.html:71
+msgid "Nothing here yet."
+msgstr ""

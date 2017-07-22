@@ -2,6 +2,8 @@ from os import environ
 import logging
 from os.path import (join, dirname, abspath)
 
+from django.utils.translation import ugettext_lazy as T
+
 from dotenv import load_dotenv
 
 
@@ -142,11 +144,20 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'en'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+LANGUAGES = (
+    ('en', T('English')),
+    ('lt', T('Lietuvių')),
+)
+
+LOCALE_PATHS = (
+    join(BASE_DIR, 'locale'),
+)
 
 STATIC_URL = '/static/'
 

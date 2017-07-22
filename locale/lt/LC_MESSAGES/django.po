@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-07-22 23:21+0300\n"
+"PO-Revision-Date: 2017-07-22 23:23+0300\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && (n"
+"%100<10 || n%100>=20) ? 1 : 2);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: lt\n"
+"X-Generator: Poedit 2.0.2\n"
+
+#: .\templates\redir\base.html:28
+msgid "About"
+msgstr "Apie"
+
+#: .\templates\redir\base.html:31
+msgid "Portfolio"
+msgstr "Portfelis"
+
+#: .\templates\redir\base.html:34
+msgid "Skills"
+msgstr "Sugebėjimai"
+
+#: .\templates\redir\base.html:40
+msgid "Contact"
+msgstr "Kontaktai"
+
+#: .\templates\redir\base.html:43
+msgid "Blog"
+msgstr "Dienoraštis"
+
+#: .\templates\redir\blog.html:4
+msgid "Tadas Talaikis Blog"
+msgstr "Dienoraštis | Tadas Talaikis"
+
+#: .\templates\redir\blog.html:21 .\templates\redir\blog.html:35
+#: .\templates\redir\blog.html:52 .\templates\redir\blog.html:71
+msgid "Nothing here yet."
+msgstr "Kol kas čia nulis."

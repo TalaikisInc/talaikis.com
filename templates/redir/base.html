@@ -1,4 +1,4 @@
-{% load static %} {% spaceless %}
+{% load static %} {% load i18n %} {% spaceless %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,35 +11,36 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{% static "redir/assets/css/style.css" %}" rel="stylesheet"> {% block js %}{% endblock %}
+    <link href="{% static " redir/assets/css/style.css " %}" rel="stylesheet"> {% block js %}{% endblock %}
 
 </head>
 
 <body>
     <nav class="navbar fixed-top navbar-toggleable-md bg-faded">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#nv-content" aria-controls="nv-content" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#nv-content" aria-controls="nv-content"
+            aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"><i class="fa fa-bars fa-fw"></i></span>
   </button>
         <a class="navbar-brand" href="https://talaikis.com">Tadas Talaikis</a>
         <div class="collapse navbar-collapse" id="nv-content">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#about">About</a>
+                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#about">{% trans "About" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#portfolio">Portfolio</a>
+                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#portfolio">{% trans "Portfolio" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#skills">Skills</a>
+                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#skills">{% trans "Skills" %}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#cv">CV</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#contact">Contact</a>
+                    <a class="nav-link scroll" href="{% if blog %}https://talaikis.com/{% endif %}#contact">{% trans "Contact" %}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="https://talaikis.com/blog/"><button class="btn btn-sm align-middle" type="button">Blog</button></a>
+                    <a class="nav-link" href="https://talaikis.com/blog/"><button class="btn btn-sm align-middle" type="button">{% trans "Blog" %}</button></a>
                 </li>
             </ul>
         </div>
@@ -70,11 +71,11 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/js/jquery.easing.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-        <script src="{% static "redir/assets/js/talaikis.js" %}"></script>
+        <script src="{% static " redir/assets/js/talaikis.js " %}"></script>
         <script>
-            (function(i, s, o, g, r, a, m) {
+            (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function() {
+                i[r] = i[r] || function () {
                     (i[r].q = i[r].q || []).push(arguments)
                 }, i[r].l = 1 * new Date();
                 a = s.createElement(o),
