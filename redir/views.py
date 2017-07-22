@@ -45,15 +45,15 @@ def blog(request, **kwargs):
     if (not post_slug is None) & (cat_slug is None):
         posts = Post.objects.filter(slug=post_slug)
         return render(request, 'redir/blog.html', {'cats_en': cats_en,
-            'cats_lt': cats_lt, 'posts': posts, 'post_slug': post_slug })
+            'cats_lt': cats_lt, 'posts': posts, 'post_slug': post_slug, 'blog': True })
     elif (not cat_slug is None) & (post_slug is None):
         cat = Cat.objects.get(slug=cat_slug)
         posts = Post.objects.filter(cat=cat)
         return render(request, 'redir/blog.html', {'cats_en': cats_en, 
-            'cats_lt': cats_lt, 'posts': posts, 'cat_slug': cat_slug })
+            'cats_lt': cats_lt, 'posts': posts, 'cat_slug': cat_slug, 'blog': True })
     else:
         return render(request, 'redir/blog.html', {'cats_en': cats_en, 
-            'cats_lt': cats_lt, 'first': True })
+            'cats_lt': cats_lt, 'first': True, 'blog': True })
 
 
 def thanks(request):

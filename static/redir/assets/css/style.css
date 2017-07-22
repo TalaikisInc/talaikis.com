@@ -79,6 +79,10 @@ body {
     padding-bottom: 25px;
 }
 
+p, li {
+    text-align: left;
+}
+
 .panel, .flip {
     padding: 25px;
     text-align: left;
@@ -101,17 +105,33 @@ body {
 }
 
 a:link {
-    color: #b3c2bf;
+    color: #3b3a36;
 }
 
 a:visited {
-    color: #e9ece5;
+    color: #173e43;
 }
 
 a:hover {
-    color: #e9ece5;
+    color: #173e43;
 }
 
 a:active {
+    color: #173e43;
+}
+
+a.nav-link:link {
     color: #e9ece5;
+}
+
+a.nav-link:visited {
+    color: #c0dfd9;
+}
+
+a.nav-link:hover {
+    color: #c0dfd9;
+}
+
+a.nav-link:active {
+    color: #c0dfd9;
 }

@@ -7,6 +7,15 @@ from django.conf import settings
 from redir.models import Post, Cat
 
 
+def replace_all(text, dic):
+    """
+    Replaces all occurrences in text by provided dictionary of replacements.
+    """
+    for i, j in list(dic.items()):
+        text = text.replace(i, j)
+    return text
+
+
 class Command(BaseCommand):
     help = 'Import posts from CSV.'
 
@@ -14,6 +23,17 @@ class Command(BaseCommand):
         
         file_name = join(settings.BASE_DIR, "imports", "admin_sekmet_posts.csv")
         category = "LT"
+        replaces = {
+            "https://sekmestechnologija.lt": "https://talaikis.com",
+            "https://www.sekmestechnologija.lt": "https://talaikis.com",
+            "https://prekybaforex.lt": "https://talaikis.com",
+            "https://www.prekybaforex.lt": "https://talaikis.com",
+            "http://sekmestechnologija.lt": "https://talaikis.com",
+            "http://www.sekmestechnologija.lt": "https://talaikis.com",
+            "http://prekybaforex.lt": "https://talaikis.com",
+            "http://www.prekybaforex.lt": "https://talaikis.com",
+            "\n\n": "</p><p>"
+        }
 
         try:
             cat = Cat.objects.get(title=category)
@@ -26,8 +46,7 @@ class Command(BaseCommand):
                 try:
                     dte = row[0].split("+")[0]
                     title = row[1]
-                    #for langer replaces use replace_all from QProb
-                    content = row[2].replace("https://sekmestechnologija.lt", "https://talaikis.com").replace("https://www.sekmestechnologija.lt", "https://talaikis.com")
+                    content = replace_all(row[2], replaces)
 
                     post = Post.objects.create(title=title, date_time=dte, content=content, cat=cat)
                     post.save()
