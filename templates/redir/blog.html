@@ -1,7 +1,13 @@
 {% extends 'redir/base.html' %}
 {% load static %}
 {% load i18n %}
-{% block title %}{% trans "Tadas Talaikis Blog" %}{% endblock %}
+{% block title %}
+{% if posts %}    
+{% with posts|first as post %}
+{{ post.title }} | 
+{% endwith %}
+{% endif %}
+{% trans "Tadas Talaikis Blog" %}{% endblock %}
 
 {% block js %}
 <link href="https://talaikis.com/static/ckeditor/plugins/codesnippet/lib/highlight/styles/default.css" rel="stylesheet">
@@ -44,10 +50,13 @@
     <div class="container">
         {% for post in posts %}
         <div class="row">
-            <div class="col-lg-12">
-                <a href="https://talaikis.com/blog/post/{{ post.slug }}/"><h3 class="display-4 section-title">{{ post.title }}</a></h3><br />{{ post.date_time }}
+            <div class="col-lg-12" style="padding-bottom: 50px;">
+                <a href="https://talaikis.com/blog/post/{{ post.slug }}/">
+                    <h3 class="display-4 section-title">{{ post.title }}</a></h3><br />{{ post.date_time }}
+                    {% if post.rate > 0 %} | {% trans "My rating" %}: {{ post.rate }}/5{% endif %}
             </div>
         </div>
+        <hr />
         {% empty %}
             <p>{% trans "Nothing here yet." %}</p>
         {% endfor %}
@@ -62,6 +71,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="display-4 section-title">{{ post.title }}</h1><br />{{ post.date_time }}
+                {% if post.rate > 0 %} | {% trans "My rating" %}: {{ post.rate }}/5{% endif %}
                 {% autoescape off %}
                     {{ post.content }}
                 {% endautoescape %}

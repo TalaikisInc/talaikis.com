@@ -11,7 +11,7 @@
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="{% static " redir/assets/css/style.css " %}" rel="stylesheet"> {% block js %}{% endblock %}
+    <link href="{% static "redir/assets/css/style.css" %}" rel="stylesheet"> {% block js %}{% endblock %}
 
 </head>
 
@@ -71,7 +71,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://blackrockdigital.github.io/startbootstrap-scrolling-nav/js/jquery.easing.min.js"></script>
         <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js"></script>
-        <script src="{% static " redir/assets/js/talaikis.js " %}"></script>
+        <script src="{% static "redir/assets/js/talaikis.js" %}"></script>
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r;
@@ -87,6 +87,24 @@
 
             ga('create', 'UA-92561073-1', 'auto');
             ga('send', 'pageview');
+
+        </script>
+        <script>
+            function getCVideoId(url) {
+                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var match = url.match(regExp);
+
+                if (match && match[2].length == 11) {
+                    return match[2];
+                } else {
+                    return 'error';
+                }
+            }
+
+            var videoId = getCVideoId('http://www.youtube.com/watch?v=zbYf5_S7oJo');
+
+            var iframeMarkup = '<iframe width="560" height="315" src="//www.youtube.com/embed/' 
+                + videoId + '" frameborder="0" allowfullscreen></iframe>';
         </script>
 </body>
 

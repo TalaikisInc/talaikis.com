@@ -64,9 +64,6 @@ def generate_json_quotes(save=False):
 
 		try:
 			quote = Quotes.objects.create(quote=quote_data, cat=cat, author=author)
-			print "Quote: {} inserted".format(quote_data)
-		except Exception as e:
-			print e
-			pass
-
-generate_json_quotes()
+			print("Quote: {} inserted".format(quote_data))
+		except Exception as err:
+			print(err)

@@ -34,10 +34,12 @@ INSTALLED_APPS = [
 CKEDITOR_CONFIGS = {
     'default': {
         'skin': 'moono',
-        'toolbar_Custom': [
+        'toolbar_custom': [
             {'name': 'basic', 'items': [
                 'Styles','Format','Font','FontSize' '-', 'Bold', 'Italic', 'Underline', 'Superscript',
                 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Table',
+            ]},
+            {'name': 'more', 'items': [
                 'Link', 'Unlink', 'SpellChecker',
                 'RemoveFormat', 'Source', 'CodeSnippet'
             ]}
@@ -49,7 +51,7 @@ CKEDITOR_CONFIGS = {
              'golang': 'Golang',
              'sql': 'SQL',
          },
-        'toolbar': 'Custom',
+        'toolbar': 'custom',
         'extraPlugins': ','.join(
             [
                 'codesnippet',

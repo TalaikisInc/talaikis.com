@@ -105,18 +105,31 @@ class QuoteAuthor(models.Model):
 
 
 class Post(AutoSlugifyOnSaveModel):
+	RATINGS = (
+		(0, 'Not applicable'),
+        (1, 'Very bad'),
+        (2, 'Poor'),
+		(3, 'Average'),
+		(4, 'Very good'),
+		(5, 'Excellent')
+    )
+
 	id = models.BigAutoField(primary_key=True)
 	title = models.CharField(max_length=250, verbose_name=T("Title"), unique=True)
 	date_time = models.DateTimeField(verbose_name=T("Date"), default=datetime.now())
 	content = models.TextField(verbose_name=T("Content"))
 	cat = models.ForeignKey(Cat, verbose_name=T("Category"), blank=True, null=True)
 	slug = models.CharField(max_length=250, verbose_name=T("Slug"), blank=True, null=True)
+	rate = models.SmallIntegerField(choices=RATINGS, default=0)
 
 	def __unicode__(self):
 		return u'%s %s' %(self.title, self.cat)
 
 	def __str__(self):
 		return u'%s %s' %(self.title, self.cat)
+	
+	class Meta:
+		ordering = ['-date_time']
 
 
 class Quotes(models.Model):

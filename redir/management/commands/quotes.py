@@ -1,7 +1,7 @@
 from django.core.management.base import BaseCommand, CommandError
 from django.conf import settings
 
-from redir.tasks import (generate_json_quotes)
+from redir.tasks import generate_json_quotes
 
 
 class Command(BaseCommand):
