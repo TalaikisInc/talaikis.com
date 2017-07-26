@@ -39,6 +39,7 @@ CKEDITOR_CONFIGS = {
                 'Styles','Format','Font','FontSize' '-', 'Bold', 'Italic', 'Underline', 'Superscript',
                 'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Table',
             ]},
+            '/',
             {'name': 'more', 'items': [
                 'Link', 'Unlink', 'SpellChecker',
                 'RemoveFormat', 'Source', 'CodeSnippet'
@@ -47,9 +48,6 @@ CKEDITOR_CONFIGS = {
         'codeSnippet_theme': 'railscasts',
          'codeSnippet_languages': {
              'python': 'Python',
-             'javascript': 'JavaScript',
-             'golang': 'Golang',
-             'sql': 'SQL',
          },
         'toolbar': 'custom',
         'extraPlugins': ','.join(

@@ -1,12 +1,11 @@
+from functools import lru_cache
+
 from django.shortcuts import render
 from django.shortcuts import render
 from django.conf import settings
 
 from .forms import ContactForm
 from .models import Contacts, Post, Cat
-
-cats_en = Cat.objects.filter(lang=0)
-cats_lt = Cat.objects.filter(lang=1)
 
 
 def indx_view(request):
@@ -31,7 +30,11 @@ def indx_view(request):
     return render(request, 'redir/index.html', {'form': form })
 
 
+@lru_cache(maxsize=None)
 def blog(request, **kwargs):
+    cats_en = Cat.objects.filter(lang=0)
+    cats_lt = Cat.objects.filter(lang=1)
+
     try:
         cat_slug = kwargs['cat_slug']
     except:
@@ -43,17 +46,20 @@ def blog(request, **kwargs):
         post_slug = None
 
     if (not post_slug is None) & (cat_slug is None):
+        #if post is requested
         posts = Post.objects.filter(slug=post_slug)
         return render(request, 'redir/blog.html', {'cats_en': cats_en,
             'cats_lt': cats_lt, 'posts': posts, 'post_slug': post_slug, 'blog': True })
     elif (not cat_slug is None) & (post_slug is None):
+        #if category is requested
         cat = Cat.objects.get(slug=cat_slug)
         posts = Post.objects.filter(cat=cat)
         return render(request, 'redir/blog.html', {'cats_en': cats_en, 
             'cats_lt': cats_lt, 'posts': posts, 'cat_slug': cat_slug, 'blog': True })
     else:
+        #if main blog page requestewd
         return render(request, 'redir/blog.html', {'cats_en': cats_en, 
-            'cats_lt': cats_lt, 'first': True, 'blog': True })
+            'cats_lt': cats_lt, 'first': True, 'blog': True, 'home': True })
 
 
 def thanks(request):
