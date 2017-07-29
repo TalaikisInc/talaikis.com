@@ -1,5 +1,5 @@
 from functools import lru_cache
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, time
 
 from django.contrib.syndication.views import Feed
 from django.utils.html import strip_tags

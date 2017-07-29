@@ -6,7 +6,7 @@
     {% trans "Tadas Talaikis Blog" %}
 {% else %}
     {% with posts|first as post %}
-        {{ post.title }} | {% if post.cat.lang == 1 %}Tadas Talaikis Dienoraštis{% else %}Tadas Talaikis Blog{% endif %}
+        {{ post.title }} | {{ post.cat.title }} | {% if post.cat.lang == 1 %}Tadas Talaikis Dienoraštis{% else %}Tadas Talaikis Blog{% endif %}
     {% endwith %}
 {% endif %}
 {% endblock %}
