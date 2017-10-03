@@ -135,3 +135,11 @@ a.nav-link:hover {
 a.nav-link:active {
     color: #c0dfd9;
 }
+
+pre {
+    text-align: left;
+    color: #fff;
+    background-color: #000;
+    font-family: sans-serif;
+    padding: 15px;
+}
