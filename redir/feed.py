@@ -27,7 +27,7 @@ class BlogFeed(Feed):
         return item.cat
 
     def item_link(self, item):
-        return "{0}/{1}/".format(self.link, item.slug)
+        return "{0}/blog/post/{1}/".format(self.link, item.slug)
 
     def item_description(self, item):
         text = strip_tags(item.content)[:1500]
