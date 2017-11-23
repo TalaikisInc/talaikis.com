@@ -78,8 +78,11 @@
         {% for post in posts %}
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="display-4 section-title">{{ post.title }}</h1><br />{{ post.date_time }}
-                {% if post.rate > 0 %} | {% trans "My rating" %}: {{ post.rate }}/5{% endif %}
+                <h1 class="display-4 section-title">
+                    <a href="https://talaikis.com/blog/category/{{ post.cat.slug }}/">{{ post.cat.title }}</a> >> 
+                    {{ post.title }}</h1><br />{{ post.date_time }}
+                    {% if post.rate > 0 %} | {% trans "My rating" %}: {{ post.rate }}/5{% endif %}
+                <p>
                 {% autoescape off %}
                     {{ post.content }}
                 {% endautoescape %}
