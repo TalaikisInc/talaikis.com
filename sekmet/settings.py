@@ -37,7 +37,7 @@ CKEDITOR_CONFIGS = {
         'toolbar_custom': [
             {'name': 'basic', 'items': [
                 'Styles','Format','Font','FontSize' '-', 'Bold', 'Italic', 'Underline', 'Superscript',
-                'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Table',
+                'NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'Table', 'Image',
             ]},
             '/',
             {'name': 'more', 'items': [

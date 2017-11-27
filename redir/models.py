@@ -121,6 +121,7 @@ class Post(AutoSlugifyOnSaveModel):
 	cat = models.ForeignKey(Cat, verbose_name=T("Category"), blank=True, null=True)
 	slug = models.CharField(max_length=250, verbose_name=T("Slug"), blank=True, null=True)
 	rate = models.SmallIntegerField(choices=RATINGS, default=0)
+	image = models.ImageField(upload_to="uploads/", blank=True, null=True, verbose_name=T("Image"))
 
 	def __unicode__(self):
 		return u'%s %s' %(self.title, self.cat)
